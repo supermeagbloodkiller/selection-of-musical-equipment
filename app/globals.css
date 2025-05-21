@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 248, 250, 252;
+  --background-end-rgb: 241, 245, 249;
+}
+
+/* Low-fi стиль */
+.low-fi {
+  filter: grayscale(0.5);
+  background-color: #f1f5f9;
+  border: 2px solid #94a3b8;
+  border-radius: 4px;
+  box-shadow: 4px 4px 0px #0f172a;
+  transition: all 0.3s ease;
+}
+
+.low-fi:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #0f172a;
+}
+
+/* High-fi стиль */
+.high-fi {
+  background: linear-gradient(135deg, #6366f1 0%, #f43f5e 100%);
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(99, 102, 241, 0.2);
+  transition: all 0.3s ease;
+}
+
+.high-fi:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(99, 102, 241, 0.3);
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+  font-family: 'Inter', sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.btn {
+  @apply px-4 py-2 rounded-md font-medium transition-all duration-300;
+}
+
+.btn-primary {
+  @apply bg-primary text-white hover:bg-primary/90;
+}
+
+.btn-secondary {
+  @apply bg-secondary text-white hover:bg-secondary/90;
+}
+
+.card {
+  @apply bg-white rounded-lg shadow-md p-6 transition-all duration-300;
+}
+
+.input {
+  @apply w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary;
+}
+
+.admin-panel {
+  @apply bg-dark text-light p-6 rounded-lg;
+}
+
+.nav-link {
+  @apply hover:text-primary transition-colors duration-300;
+}
+
+.active-nav-link {
+  @apply text-primary font-medium;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 0.5rem;
+  }
+}
