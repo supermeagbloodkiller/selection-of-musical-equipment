@@ -50,18 +50,18 @@ export default function Navbar() {
   }, [searchTerm]);
 
   return (
-    <nav className="bg-white shadow-md py-4">
+    <nav className="bg-gradient-to-r from-frankenstrat-black via-frankenstrat-gray to-frankenstrat-black shadow-2xl py-4 border-b-2 border-frankenstrat-red">
       <div className="container mx-auto flex justify-between items-center">
-        <Link href="/" className="flex items-center space-x-2">
-          <FaGuitar className="text-primary text-2xl" />
-          <span className="text-xl font-bold">МузыкаИнфо</span>
+        <Link href="/" className="flex items-center space-x-3 group">
+          <FaGuitar className="text-frankenstrat-red text-3xl animate-rock-pulse group-hover:text-frankenstrat-white transition-colors" />
+          <span className="font-judas text-2xl text-frankenstrat-white">🤘 METAL LEGENDS 🤘</span>
         </Link>
 
         {/* Мобильное меню */}
         <div className="md:hidden">
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="text-dark focus:outline-none"
+            className="text-metal-silver hover:text-metal-gold focus:outline-none transition-colors"
           >
             {isMenuOpen ? (
               <FaTimes className="text-2xl" />
@@ -75,34 +75,34 @@ export default function Navbar() {
         <div className="hidden md:flex items-center space-x-8">
           <Link
             href="/"
-            className={`nav-link ${pathname === '/' ? 'active-nav-link' : ''}`}
+            className={`metal-subtitle text-lg hover:text-metal-gold transition-colors ${pathname === '/' ? 'text-metal-gold' : 'text-metal-silver'}`}
           >
-            Главная
+            🏠 ГЛАВНАЯ
           </Link>
 
           {/* Выпадающее меню групп */}
           <div className="relative" ref={groupsMenuRef}>
             <button
               onClick={() => setIsGroupsMenuOpen(!isGroupsMenuOpen)}
-              className={`nav-link flex items-center space-x-1 ${pathname.startsWith('/groups/') ? 'active-nav-link' : ''}`}
+              className={`metal-subtitle text-lg flex items-center space-x-2 hover:text-metal-gold transition-colors ${pathname.startsWith('/groups/') ? 'text-metal-gold' : 'text-metal-silver'}`}
             >
-              <FaUsers className="text-sm" />
-              <span>Группы</span>
-              <FaChevronDown className={`ml-1 text-xs transition-transform ${isGroupsMenuOpen ? 'rotate-180' : ''}`} />
+              <FaUsers className="text-lg" />
+              <span>🎸 ГРУППЫ</span>
+              <FaChevronDown className={`text-sm transition-transform ${isGroupsMenuOpen ? 'rotate-180' : ''}`} />
             </button>
 
             {isGroupsMenuOpen && (
-              <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-md shadow-lg z-10 py-2">
-                <div className="px-3 py-2 border-b">
+              <div className="absolute top-full left-0 mt-2 w-72 bg-gradient-to-b from-metal-gray to-metal-black rounded-lg shadow-2xl border-2 border-metal-red z-10 py-2">
+                <div className="px-3 py-2 border-b border-metal-red/30">
                   <div className="relative">
                     <input
                       type="text"
-                      placeholder="Поиск группы..."
-                      className="w-full pl-8 pr-3 py-1 text-sm border rounded-md focus:outline-none focus:ring-1 focus:ring-primary"
+                      placeholder="🔍 Поиск группы..."
+                      className="w-full pl-8 pr-3 py-2 text-sm bg-metal-black border-2 border-metal-red/50 rounded-md text-metal-silver placeholder-metal-silver/60 focus:outline-none focus:border-metal-gold focus:ring-1 focus:ring-metal-gold"
                       value={searchTerm}
                       onChange={(e) => setSearchTerm(e.target.value)}
                     />
-                    <FaSearch className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm" />
+                    <FaSearch className="absolute left-2 top-1/2 transform -translate-y-1/2 text-metal-red text-sm" />
                   </div>
                 </div>
                 <div className="max-h-60 overflow-y-auto">
@@ -111,14 +111,14 @@ export default function Navbar() {
                       <Link
                         key={group.id}
                         href={`/groups/${group.id}`}
-                        className="block px-4 py-2 text-sm hover:bg-gray-100"
+                        className="block px-4 py-3 text-sm text-metal-silver hover:bg-metal-red/20 hover:text-metal-gold transition-colors font-metal-display"
                         onClick={() => setIsGroupsMenuOpen(false)}
                       >
-                        {group.name}
+                        🤘 {group.name}
                       </Link>
                     ))
                   ) : (
-                    <div className="px-4 py-2 text-sm text-gray-500">Ничего не найдено</div>
+                    <div className="px-4 py-2 text-sm text-metal-silver/60">❌ Ничего не найдено</div>
                   )}
                 </div>
               </div>
@@ -127,64 +127,64 @@ export default function Navbar() {
 
           <Link
             href="/admin"
-            className="btn btn-primary flex items-center space-x-1"
+            className="metal-btn px-4 py-2 rounded-lg flex items-center space-x-2"
           >
-            <FaLock className="text-sm" />
-            <span>Админ</span>
+            <FaLock className="text-lg" />
+            <span>🔐 АДМИН</span>
           </Link>
         </div>
       </div>
 
       {/* Мобильное меню (выпадающее) */}
       {isMenuOpen && (
-        <div className="md:hidden bg-white py-4 px-6 shadow-lg animate-fade-in">
-          <div className="flex flex-col space-y-4">
+        <div className="md:hidden bg-gradient-to-b from-metal-gray to-metal-black py-6 px-6 shadow-2xl border-t-2 border-metal-red animate-fade-in">
+          <div className="flex flex-col space-y-6">
             <Link
               href="/"
-              className={`nav-link ${pathname === '/' ? 'active-nav-link' : ''}`}
+              className={`metal-subtitle text-lg hover:text-metal-gold transition-colors ${pathname === '/' ? 'text-metal-gold' : 'text-metal-silver'}`}
               onClick={() => setIsMenuOpen(false)}
             >
-              Главная
+              🏠 ГЛАВНАЯ
             </Link>
 
             {/* Мобильное подменю групп */}
-            <div className="space-y-2">
+            <div className="space-y-4">
               <div
-                className={`nav-link flex items-center justify-between ${pathname.startsWith('/groups/') ? 'active-nav-link' : ''}`}
+                className={`metal-subtitle text-lg flex items-center justify-between ${pathname.startsWith('/groups/') ? 'text-metal-gold' : 'text-metal-silver'}`}
                 onClick={() => setFilteredGroups(groups)}
               >
-                <div className="flex items-center space-x-1">
-                  <FaUsers className="text-sm" />
-                  <span>Группы</span>
+                <div className="flex items-center space-x-2">
+                  <FaUsers className="text-lg" />
+                  <span>🎸 ГРУППЫ</span>
                 </div>
               </div>
 
-              <div className="pl-4 space-y-2">
-                <div className="relative mb-2">
+              <div className="pl-4 space-y-4">
+                <div className="relative">
                   <input
                     type="text"
-                    placeholder="Поиск группы..."
-                    className="w-full pl-8 pr-3 py-1 text-sm border rounded-md focus:outline-none focus:ring-1 focus:ring-primary"
+                    placeholder="🔍 Поиск группы..."
+                    className="w-full pl-8 pr-3 py-2 text-sm bg-metal-black border-2 border-metal-red/50 rounded-md text-metal-silver placeholder-metal-silver/60 focus:outline-none focus:border-metal-gold focus:ring-1 focus:ring-metal-gold"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                   />
-                  <FaSearch className="absolute left-2 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm" />
+                  <FaSearch className="absolute left-2 top-1/2 transform -translate-y-1/2 text-metal-red text-sm" />
                 </div>
 
-                <div className="max-h-40 overflow-y-auto space-y-1">
+                <div className="max-h-40 overflow-y-auto space-y-2">
                   {filteredGroups.length > 0 ? (
                     filteredGroups.map(group => (
                       <Link
                         key={group.id}
                         href={`/groups/${group.id}`}
-                        className="block py-1 text-sm hover:text-primary"
+                        className="block py-2 text-sm text-metal-silver hover:text-metal-gold transition-colors font-metal-display"
                         onClick={() => setIsMenuOpen(false)}
                       >
-                        {group.name}
+                        🤘 {group.name}
                       </Link>
                     ))
                   ) : (
-                    <div className="text-sm text-gray-500">Ничего не найдено</div>
+                    <div className="text-sm text-metal-silver/60">❌ Ничего не найдено</div>
                   )}
                 </div>
               </div>
@@ -192,11 +192,11 @@ export default function Navbar() {
 
             <Link
               href="/admin"
-              className="btn btn-primary w-full text-center flex items-center justify-center space-x-1"
+              className="metal-btn w-full text-center flex items-center justify-center space-x-2 py-3 rounded-lg"
               onClick={() => setIsMenuOpen(false)}
             >
-              <FaLock className="text-sm" />
-              <span>Админ</span>
+              <FaLock className="text-lg" />
+              <span>🔐 АДМИН</span>
             </Link>
           </div>
         </div>

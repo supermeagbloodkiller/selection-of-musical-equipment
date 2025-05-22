@@ -1,3 +1,5 @@
+/* Металлические шрифты в стиле Judas Priest и Iron Maiden */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Creepster&family=Metal+Mania&family=Nosifer&family=Butcherman&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
@@ -5,48 +7,120 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 248, 250, 252;
-  --background-end-rgb: 241, 245, 249;
+  /* Металлическая цветовая схема: черный, красный, белый */
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 20, 20, 20;
+  --metal-red: #dc2626;
+  --metal-dark-red: #991b1b;
+  --metal-silver: #e5e7eb;
+  --metal-gold: #fbbf24;
 }
 
-/* Low-fi стиль */
-.low-fi {
-  filter: grayscale(0.5);
-  background-color: #f1f5f9;
-  border: 2px solid #94a3b8;
-  border-radius: 4px;
-  box-shadow: 4px 4px 0px #0f172a;
+/* Металлические заголовки в стиле Judas Priest / Iron Maiden */
+.metal-title {
+  font-family: 'Cinzel', serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  background: linear-gradient(45deg, #dc2626, #fbbf24, #dc2626);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: metalShine 3s ease-in-out infinite;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  filter: drop-shadow(0 0 10px rgba(220, 38, 38, 0.5));
+}
+
+.metal-subtitle {
+  font-family: 'Metal Mania', cursive;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #e5e7eb;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* EVH гитарные карточки */
+.evh-card {
+  background: linear-gradient(135deg, #000000 0%, #1f1f1f 50%, #000000 100%);
+  border: 2px solid #dc2626;
+  border-radius: 8px;
+  box-shadow:
+    0 0 20px rgba(220, 38, 38, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
-.low-fi:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0px #0f172a;
+.evh-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(220, 38, 38, 0.2), transparent);
+  transition: left 0.5s;
 }
 
-/* High-fi стиль */
-.high-fi {
-  background: linear-gradient(135deg, #6366f1 0%, #f43f5e 100%);
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(99, 102, 241, 0.2);
-  transition: all 0.3s ease;
+.evh-card:hover::before {
+  left: 100%;
 }
 
-.high-fi:hover {
+.evh-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(99, 102, 241, 0.3);
+  box-shadow:
+    0 10px 30px rgba(220, 38, 38, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  border-color: #fbbf24;
+}
+
+/* Металлические кнопки */
+.metal-btn {
+  background: linear-gradient(135deg, #1f1f1f 0%, #000000 50%, #1f1f1f 100%);
+  border: 2px solid #dc2626;
+  color: #e5e7eb;
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.metal-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(220, 38, 38, 0.3), transparent);
+  transition: left 0.3s;
+}
+
+.metal-btn:hover::before {
+  left: 100%;
+}
+
+.metal-btn:hover {
+  border-color: #fbbf24;
+  color: #fbbf24;
+  box-shadow: 0 0 15px rgba(220, 38, 38, 0.5);
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background:
+    radial-gradient(circle at 20% 80%, rgba(220, 38, 38, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(251, 191, 36, 0.1) 0%, transparent 50%),
+    linear-gradient(135deg, rgb(var(--background-start-rgb)) 0%, rgb(var(--background-end-rgb)) 100%);
   font-family: 'Inter', sans-serif;
+  min-height: 100vh;
 }
 
 .container {
@@ -87,19 +161,78 @@ body {
   @apply text-primary font-medium;
 }
 
-/* Анимации */
+/* Металлические анимации */
+@keyframes metalShine {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+@keyframes metalGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(220, 38, 38, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(220, 38, 38, 0.6);
+  }
+}
+
+@keyframes rockPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
 }
 
 .animate-fade-in {
   animation: fadeIn 0.5s ease-in-out;
 }
 
+.animate-metal-glow {
+  animation: metalGlow 2s ease-in-out infinite;
+}
+
+.animate-rock-pulse {
+  animation: rockPulse 2s ease-in-out infinite;
+}
+
+/* Дополнительные металлические эффекты */
+.metal-btn:active {
+  transform: scale(0.95);
+}
+
+.evh-card:active {
+  transform: translateY(-2px) scale(0.98);
+}
+
+/* Улучшенные анимации для мобильных устройств */
+@media (prefers-reduced-motion: reduce) {
+  .animate-metal-shine,
+  .animate-metal-glow,
+  .animate-rock-pulse {
+    animation: none;
+  }
+}
+
 /* Адаптивность */
 @media (max-width: 768px) {
   .container {
     padding: 0 0.5rem;
+  }
+
+  .metal-title {
+    font-size: 2rem;
+    letter-spacing: 2px;
+  }
+
+  .metal-subtitle {
+    font-size: 1rem;
+    letter-spacing: 1px;
+  }
+
+  .evh-card {
+    padding: 1.5rem;
   }
 }
