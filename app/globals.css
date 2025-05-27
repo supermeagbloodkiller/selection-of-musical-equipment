@@ -1,0 +1,247 @@
+/* Классические шрифты для музыкального сайта */
+@import url('https://fonts.googleapis.com/css2?family=Times+New+Roman&family=Arial:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Красно-белая цветовая схема */
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 255, 255, 255;
+  --background-end-rgb: 248, 248, 248;
+  --primary-red: #dc2626;
+  --dark-red: #991b1b;
+  --light-gray: #f3f4f6;
+  --accent-color: #fbbf24;
+}
+
+/* Классические заголовки для музыкального сайта */
+.main-title {
+  font-family: 'Times New Roman', serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background: linear-gradient(45deg, #dc2626, #000000, #dc2626);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: titleShine 3s ease-in-out infinite;
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+  filter: drop-shadow(0 0 8px rgba(220, 38, 38, 0.4));
+}
+
+.subtitle {
+  font-family: 'Arial', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #000000;
+  text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.8);
+}
+
+/* Стильные карточки в красно-белой гамме */
+.music-card {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f8f8 50%, #ffffff 100%);
+  border: 2px solid #dc2626;
+  border-radius: 8px;
+  box-shadow:
+    0 0 20px rgba(220, 38, 38, 0.3),
+    inset 0 1px 0 rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.music-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(220, 38, 38, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.music-card:hover::before {
+  left: 100%;
+}
+
+.music-card:hover {
+  transform: translateY(-5px);
+  box-shadow:
+    0 10px 30px rgba(220, 38, 38, 0.5),
+    inset 0 1px 0 rgba(0, 0, 0, 0.2);
+  border-color: #ffffff;
+}
+
+/* Стильные кнопки */
+.music-btn {
+  background: linear-gradient(135deg, #f8f8f8 0%, #ffffff 50%, #f8f8f8 100%);
+  border: 2px solid #dc2626;
+  color: #000000;
+  font-family: 'Arial', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.music-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(220, 38, 38, 0.3), transparent);
+  transition: left 0.3s;
+}
+
+.music-btn:hover::before {
+  left: 100%;
+}
+
+.music-btn:hover {
+  background: linear-gradient(135deg, #dc2626 0%, #991b1b 50%, #dc2626 100%);
+  border-color: #ffffff;
+  color: #ffffff;
+  box-shadow: 0 0 15px rgba(220, 38, 38, 0.5);
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background:
+    radial-gradient(circle at 20% 80%, rgba(220, 38, 38, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+    linear-gradient(135deg, rgb(var(--background-start-rgb)) 0%, rgb(var(--background-end-rgb)) 100%);
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.btn {
+  @apply px-4 py-2 rounded-md font-medium transition-all duration-300;
+}
+
+.btn-primary {
+  @apply bg-primary text-white hover:bg-primary/90;
+}
+
+.btn-secondary {
+  @apply bg-secondary text-white hover:bg-secondary/90;
+}
+
+.card {
+  @apply bg-white rounded-lg shadow-md p-6 transition-all duration-300;
+}
+
+.input {
+  @apply w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary;
+}
+
+.admin-panel {
+  @apply bg-dark text-light p-6 rounded-lg;
+}
+
+.nav-link {
+  @apply hover:text-primary transition-colors duration-300;
+}
+
+.active-nav-link {
+  @apply text-primary font-medium;
+}
+
+/* Анимации */
+@keyframes titleShine {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes cardGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(220, 38, 38, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(220, 38, 38, 0.6);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.animate-glow {
+  animation: cardGlow 2s ease-in-out infinite;
+}
+
+.animate-pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Дополнительные эффекты */
+.music-btn:active {
+  transform: scale(0.95);
+}
+
+.music-card:active {
+  transform: translateY(-2px) scale(0.98);
+}
+
+/* Улучшенные анимации для мобильных устройств */
+@media (prefers-reduced-motion: reduce) {
+  .animate-glow,
+  .animate-pulse {
+    animation: none;
+  }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 0.5rem;
+  }
+
+  .main-title {
+    font-size: 2rem;
+    letter-spacing: 1.5px;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    letter-spacing: 1px;
+  }
+
+  .music-card {
+    padding: 1.5rem;
+  }
+}
+
+/* Дополнительные цвета для совместимости */
+.text-red { color: var(--primary-red); }
+.text-white { color: #ffffff; }
+.text-black { color: #000000; }
+.bg-red { background-color: var(--primary-red); }
+.bg-white { background-color: #ffffff; }
+.bg-black { background-color: #000000; }
+.bg-dark { background-color: var(--background-end-rgb); }
